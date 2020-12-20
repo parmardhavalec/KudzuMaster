@@ -31,7 +31,7 @@ class App extends React.Component {
   };
 
   sourPressedUSA = () => {
-    this.setState({peopleCountUSA: '70% people like Sweet'});
+    this.setState({peopleCountUSA: '70% people like Sour'});
   };
 
   render() {
