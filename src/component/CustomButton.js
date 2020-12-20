@@ -14,11 +14,11 @@ const CustomButton = (props) => {
 const styles = StyleSheet.create({
   backgroundColor: {
     backgroundColor: 'blue',
-    width: '80%',
+    width: '30%',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 50,
-    margin: 40,
+    height: 30,
+    margin: 10,
   },
   textStyle: {
     fontSize: 14,

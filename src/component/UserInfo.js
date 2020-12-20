@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-const UserInfo = ({name, age}) => {
+const UserInfo = ({country, peopleCount}) => {
   return (
     <View>
-      <Text>Name: {name}</Text>
-      <Text>Age: {age}</Text>
+      <Text>{country}</Text>
+      
+      <Text>People Liked: {peopleCount}</Text>
     </View>
   );
 };
