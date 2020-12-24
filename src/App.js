@@ -7,25 +7,26 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View, Dimensions} from 'react-native';
 
+import {Provider} from 'react-redux';
+import {combineReducers, createStore} from 'redux';
+import reducer from './pages/HomeScreen/reducer/reducer';
 
-//declaring global
-let test = 'test';
-let isAvaialble = true;
+import HomeScreen from './pages/HomeScreen';
+import Routes from './route';
+
+const rootReducer = combineReducers({
+  reducer,
+});
+
+const store = createStore(rootReducer);
 
 const App = () => {
-
-  //local const cannot be modified
-  const testArray = [{name: 'test'}];
-
-  //local variable can be modified 
-  let name="test";
-
   return (
-    <View>
-      <Text>{test}</Text>
-    </View>
+    <Provider store={store}>
+      <Routes />
+    </Provider>
   );
 };
 
