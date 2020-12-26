@@ -7,13 +7,11 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View, Dimensions} from 'react-native';
+import {} from 'react-native';
 
 import {Provider} from 'react-redux';
 import {combineReducers, createStore} from 'redux';
 import reducer from './pages/HomeScreen/reducer/reducer';
-
-import HomeScreen from './pages/HomeScreen';
 import Routes from './route';
 
 const rootReducer = combineReducers({

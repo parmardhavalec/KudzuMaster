@@ -1,12 +1,17 @@
 import React from 'react';
-import {View, Text, Dimensions, TouchableOpacity} from 'react-native';
+import {View, Text, Dimensions, TouchableOpacity, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
-import {selectTheme} from './action/action';
+import {scoreTeamA} from './action/action';
 import * as actiontypes from './action/actiontypes';
+import CustomHooks from '../CustomHooks/CustomHooks'
 
 class HomeScreen extends React.Component {
-  themeSelected = (color) => {
-    this.props.selectTheme(color);
+  
+  totalScoreTeamA = (score) => {
+    this.props.scoreTeamA(score);
+  };
+  totalScoreTeamB = (score) => {
+    this.props.scoreTeamB(score);
   };
   render() {
     return (
@@ -16,20 +21,40 @@ class HomeScreen extends React.Component {
           height: '100%',
           justifyContent: 'center',
         }}>
-        <View>
-          <Text>Pick Themes</Text>
-          <TouchableOpacity onPress={() => this.themeSelected('red')}>
-            <Text style={{padding: 10, alignSelf: 'center'}}>Red</Text>
+          <CustomHooks label="TEAM A"/>
+          <CustomHooks label="TEAM B"/>
+          <TouchableOpacity
+        onPress={() => this.props.navigation.navigate('WinnerScreen')}
+        style={styles.loginBtn}>
+        <Text style={styles.loginText}>SCORE CARD</Text>
+      </TouchableOpacity>
+        {/* <View>
+          <Text>TEAM A</Text>
+          <TouchableOpacity onPress={() => this.totalScoreTeamA(score+1)}>
+            <Text style={{padding: 10, alignSelf: 'center'}}>Add</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.themeSelected('green')}>
-            <Text style={{padding: 10, alignSelf: 'center'}}>Green</Text>
+          <TouchableOpacity>
+            <Text style={{padding: 10, alignSelf: 'center'}}>TESTA</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.themeSelected('black')}>
-            <Text style={{padding: 10, alignSelf: 'center'}}> Black</Text>
+          <TouchableOpacity onPress={() => this.totalScoreTeamA(score-1)}>
+            <Text style={{padding: 10, alignSelf: 'center'}}> Sub</Text>
           </TouchableOpacity>
         </View>
 
         <View>
+          <Text>TEAM B</Text>
+          <TouchableOpacity onPress={() => this.totalScoreTeamB(score+1)}>
+            <Text style={{padding: 10, alignSelf: 'center'}}>Add</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={{padding: 10, alignSelf: 'center'}}>TESTB</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.totalScoreTeamB(score-1)}>
+            <Text style={{padding: 10, alignSelf: 'center'}}> Sub</Text>
+          </TouchableOpacity>
+        </View> */}
+
+        {/* <View>
           <Text style={{padding: 10, alignSelf: 'center', fontSize: 30}}>
             Go To
           </Text>
@@ -41,7 +66,7 @@ class HomeScreen extends React.Component {
             onPress={() => this.props.navigation.navigate('ScreenB')}>
             <Text style={{padding: 10, alignSelf: 'center'}}>Screen B</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     );
   }
@@ -49,7 +74,8 @@ class HomeScreen extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   //selectTheme: () => dispatch({type: actiontypes.COLOR_SELECTED}),
-  selectTheme: (color) => dispatch(selectTheme(color)),
+  scoreTeamA: (score) => dispatch(scoreTeamA(score)),
+  scoreTeamB: (score) => dispatch(scoreTeamB(score)),
 });
 
 const mapStateToProps = (state) => {
@@ -59,5 +85,22 @@ const mapStateToProps = (state) => {
     data: '',
   };
 };
+
+
+const styles = StyleSheet.create({
+  loginBtn: {
+    width: '80%',
+    backgroundColor: '#fb5b5a',
+    borderRadius: 25,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 40,
+    marginBottom: 10,
+  },
+  loginText: {
+    color: 'white',
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

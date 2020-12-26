@@ -1,1 +1,2 @@
-export const COLOR_SELECTED ="colorSelected";
+export const TEAMA_SCORE ="teamAScore";
+export const TEAMB_SCORE ="teamBScore";

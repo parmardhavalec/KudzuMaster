@@ -1,13 +1,16 @@
 import * as actions from '../action/actiontypes';
 
 const initialState = {
-  colorSelected: '',
+  score: '',
 };
 
 const reducer = (state = initialState, {type, payload}) => {
   switch (type) {
-    case actions.COLOR_SELECTED:
-      return {...state, colorSelected: payload};
+    case actions.TEAMA_SCORE:
+      return {...state, score: payload};
+
+    case actions.TEAMB_SCORE:
+        return {...state, score: payload};
 
     default:
       return state;
